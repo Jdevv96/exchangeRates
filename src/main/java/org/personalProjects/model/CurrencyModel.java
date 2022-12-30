@@ -3,23 +3,23 @@ package org.personalProjects.model;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-public class currency {
+public class CurrencyModel {
 
     private String base;
     private LocalDate date;
     private HashMap <String, Float> rates = new HashMap<>();
 
     // Default
-    public currency() {
+    public CurrencyModel() {
     }
 
     // Constructor call by date
-    public currency(LocalDate date, HashMap<String, Float> rates) {
+    public CurrencyModel(LocalDate date, HashMap<String, Float> rates) {
         this.date = date;
         this.rates = rates;
     }
 
-    public currency(String base, LocalDate date, HashMap<String, Float> rates) {
+    public CurrencyModel(String base, LocalDate date, HashMap<String, Float> rates) {
         this.base = base;
         this.date = date;
         this.rates = rates;
