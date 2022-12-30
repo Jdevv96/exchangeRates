@@ -1,25 +1,24 @@
 package org.personalProjects.model;
 
-import java.time.LocalDate;
-import java.util.HashMap;
 
-public class CurrencyModel {
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ExchangeRate {
 
     private String base;
-    private LocalDate date;
-    private HashMap <String, Float> rates = new HashMap<>();
+    private Date date;
+    private Map<String, Double> rates;
 
-    // Default
-    public CurrencyModel() {
+    public ExchangeRate() {
     }
 
-    // Constructor call by date
-    public CurrencyModel(LocalDate date, HashMap<String, Float> rates) {
-        this.date = date;
+    public ExchangeRate(Map<String, Double> rates) {
         this.rates = rates;
     }
 
-    public CurrencyModel(String base, LocalDate date, HashMap<String, Float> rates) {
+    public ExchangeRate(String base, Date date, Map<String, Double> rates) {
         this.base = base;
         this.date = date;
         this.rates = rates;
@@ -33,19 +32,19 @@ public class CurrencyModel {
         this.base = base;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public HashMap<String, Float> getRates() {
+    public Map<String, Double> getRates() {
         return rates;
     }
 
-    public void setRates(HashMap<String, Float> rates) {
+    public void setRates(HashMap<String, Double> rates) {
         this.rates = rates;
     }
 
