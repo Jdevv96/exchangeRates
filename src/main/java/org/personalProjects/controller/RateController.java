@@ -3,8 +3,6 @@ package org.personalProjects.controller;
 import org.personalProjects.model.ExchangeRate;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Map;
-
 public class RateController {
     private final String BASE_API_URL = "https://api.exchangerate.host/latest/";
     private RestTemplate restTemplate = new RestTemplate();

@@ -14,10 +14,6 @@ public class ExchangeRate {
     public ExchangeRate() {
     }
 
-    public ExchangeRate(Map<String, Double> rates) {
-        this.rates = rates;
-    }
-
     public ExchangeRate(String base, Date date, Map<String, Double> rates) {
         this.base = base;
         this.date = date;

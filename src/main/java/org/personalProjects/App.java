@@ -3,10 +3,6 @@ package org.personalProjects;
 import org.personalProjects.model.ExchangeRate;
 import org.personalProjects.controller.ConsoleController;
 import org.personalProjects.controller.RateController;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.Map;
 
 public class App {
     private static final ConsoleController consoleController = new ConsoleController();
@@ -17,15 +13,33 @@ public class App {
     public static void main(String[] args) {
         App app = new App();
         consoleController.greetConsole();
-        exchange  = rateController.getAll();
-        consoleController.printExchangeRates(exchange);
-        //ExchangeRate response = restTemplate.getForObject("https://api.exchangerate.host/latest/", ExchangeRate.class);
-        //System.out.println(response.getBase());
-        //System.out.println(response.getRates());
+        app.run();
     }
 
-    private void handleCurrencyExchangeRates() {
+    private void run () {
+        int optionSelection = -1;
+        while (optionSelection != 0) {
+            consoleController.printMenuOptions();
+            optionSelection = consoleController.menuOptionsPrompt();
+            if (optionSelection == 1) {
+                handleDefaultExchangeRates();
+            } else if (optionSelection == 2) {
+                consoleController.promptForBaseToConvert();
+                handleRatesWithGivenBase();
+            }
+        }
+    }
+
+    private void handleDefaultExchangeRates() {
         exchange  = rateController.getAll();
-        consoleController.printExchangeRates(exchange);
+        System.out.println();
+        consoleController.printExchangeRate(exchange);
+        System.out.println();
+    }
+
+    private void handleRatesWithGivenBase(){
+        exchange = rateController.getRatesByBase(consoleController.currencyToConvert());
+        System.out.println();
+        consoleController.printExchangeRate(exchange);
     }
 }
